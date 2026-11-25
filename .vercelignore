@@ -4,5 +4,6 @@ dist/
 README.md
 assets/img/PROMPTS.md
 
-# Source photographs kept for cropping; the site serves assets/img/generated/.
+# Source photographs kept for cropping. The site serves assets/img/opt/.
 assets/img/*.jpg
+assets/img/generated/

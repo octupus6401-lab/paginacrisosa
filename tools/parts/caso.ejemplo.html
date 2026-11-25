@@ -1,0 +1,19 @@
+<!--
+  PLANTILLA. No es una página del sitio y build.py no la publica.
+  Para agregar un caso real:
+  1. Copia el <article> de abajo dentro de <div class="cases" id="casos">
+     en tools/parts/soluciones.html, antes del artículo "Próximamente"
+     (o quita el próximamente cuando ya haya un caso).
+  2. Borra la clase case--sample y el párrafo sample__flag.
+  3. Sustituye los corchetes sólo con datos confirmados por la empresa.
+     No inventes cliente, sector ni resultado. Si el nombre del cliente
+     no está autorizado, usa el sector o el tipo de carga.
+  4. python3 tools/build.py
+-->
+<article class="case">
+  <p class="eyebrow">[Año]</p>
+  <h3 data-es="[Sector o tipo de carga]" data-en="[Sector or freight type]">[Sector o tipo de carga]</h3>
+  <p><b data-es="Necesidad." data-en="Need.">Necesidad.</b> <span data-es="[Qué pedía la operación.]" data-en="[What the operation asked for.]">[Qué pedía la operación.]</span></p>
+  <p><b data-es="Solución." data-en="Solution.">Solución.</b> <span data-es="[Qué diseñó CRISOSA.]" data-en="[What CRISOSA designed.]">[Qué diseñó CRISOSA.]</span></p>
+  <p><b data-es="Resultado." data-en="Result.">Resultado.</b> <span data-es="[Cifra confirmada, o elimina este párrafo.]" data-en="[Confirmed figure, or delete this paragraph.]">[Cifra confirmada, o elimina este párrafo.]</span></p>
+</article>
