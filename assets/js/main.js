@@ -3,7 +3,7 @@
 (function () {
   'use strict';
 
-  var EMAIL = 'slopez@crisosa.com';
+  var EMAIL = 'ventas@crisosa.com';
   var $ = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 

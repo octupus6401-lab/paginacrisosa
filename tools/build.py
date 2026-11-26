@@ -8,13 +8,13 @@ live in tools/parts/<slug>.html.
     python3 tools/build.py
 
 The quote form is static: it opens the visitor's mail client addressed to
-slopez@crisosa.com. There is no form backend and no API key in this repo.
+ventas@crisosa.com. There is no form backend and no API key in this repo.
 To receive submissions without a mail client, point <form class="quote-form">
 at a form service and keep the same field names (company, name, email,
 phone, service, volume, message).
 
-WhatsApp uses the published Mexico line +52 (664) 607-20-00. If the
-WhatsApp account lives on another number, change WA below.
+WhatsApp is a separate mobile line from the company phone. Change WA below
+if that handset changes.
 """
 import html
 import os
@@ -27,13 +27,14 @@ PARTS = ROOT / "tools" / "parts"
 sys.path.insert(0, str(ROOT / "tools"))
 from plates import PLATES  # noqa: E402
 
-EMAIL = "slopez@crisosa.com"
-CONTACT = "Salvador López Vives"
+EMAIL = "ventas@crisosa.com"
+CONTACT = "Emilio Vives"
 MX_TEL = "+526646072000"
-MX_HUMAN = "+52 (664) 607-20-00"
+MX_HUMAN = "+52 (664) 607-2000"
 US_TEL = "+16192702229"
 US_HUMAN = "+1 (619) 270-22-29"
-WA = "526646072000"
+WA = "526646933534"
+WA_HUMAN = "+52 664 693 3534"
 
 # slug, directory, ES nav, EN nav
 PAGES = [
@@ -119,18 +120,18 @@ META = {
  "instalaciones": (
   "Instalaciones: 45,000 m² en 8 inmuebles | CRISOSA",
   "Facilities: 45,000 m² across 8 buildings | CRISOSA",
-  "Cerca de 45,000 m² en ocho inmuebles arrendados: Tijuana, Valle Redondo, Rosarito, Lerma y Piedras Negras.",
-  "About 45,000 m² across eight leased facilities: Tijuana, Valle Redondo, Rosarito, Lerma and Piedras Negras."),
+  "Cerca de 45,000 m² en ocho inmuebles: Tijuana, Valle Redondo, Rosarito, Lerma y Piedras Negras.",
+  "About 45,000 m² across eight facilities: Tijuana, Valle Redondo, Rosarito, Lerma and Piedras Negras."),
  "nosotros": (
   "Nosotros: CRISOSA desde 1994 en Tijuana",
   "About CRISOSA, in Tijuana since 1994",
-  "Fundada en 1994 en Tijuana. Más de 30 años y un crecimiento compuesto de 20% en dólares entre 1996 y 2025. Contacto: Salvador López Vives.",
-  "Founded in 1994 in Tijuana. 30+ years and 20% compound growth in US dollars from 1996 to 2025. Contact: Salvador López Vives."),
+  "Fundada en 1994 en Tijuana. Más de 30 años y un crecimiento compuesto de 20% en dólares entre 1996 y 2025. Contacto: Emilio Vives.",
+  "Founded in 1994 in Tijuana. 30+ years and 20% compound growth in US dollars from 1996 to 2025. Contact: Emilio Vives."),
  "contacto": (
   "Cotizar almacenaje o shelter | Contacto CRISOSA",
   "Quote warehousing or shelter | Contact CRISOSA",
-  "Solicita espacio o una cotización. Salvador López Vives, slopez@crisosa.com, (664) 607-20-00 y USA (619) 270-22-29.",
-  "Request space or a quote. Salvador López Vives, slopez@crisosa.com, +52 (664) 607-20-00 and USA +1 (619) 270-22-29."),
+  "Solicita espacio o una cotización. Emilio Vives, ventas@crisosa.com, +52 (664) 607-2000 y USA (619) 270-22-29.",
+  "Request space or a quote. Emilio Vives, ventas@crisosa.com, +52 (664) 607-2000 and USA +1 (619) 270-22-29."),
 }
 
 SERVICES = [
@@ -206,11 +207,11 @@ def quote_form(default):
           <textarea id="f-msg" name="message" required data-es-ph="Producto, origen, destino y qué necesitas resolver." data-en-ph="Product, origin, destination and what you need solved." placeholder="Producto, origen, destino y qué necesitas resolver."></textarea>
         </div>
         <button class="btn btn--primary" type="submit" data-es="Enviar solicitud" data-en="Send request">Enviar solicitud</button>
-        <p class="form__status" role="status" hidden data-es="Se abre tu correo para enviar la solicitud a slopez@crisosa.com. Si no se abre, usa el teléfono o WhatsApp." data-en="Your email app opens to send the request to slopez@crisosa.com. If it does not, use the phone or WhatsApp.">Se abre tu correo para enviar la solicitud a slopez@crisosa.com. Si no se abre, usa el teléfono o WhatsApp.</p>
-        <p class="form__note" data-es="Este sitio no guarda el formulario. El mensaje lo envías tú, desde tu correo, a slopez@crisosa.com." data-en="This site does not store the form. You send the message yourself, from your email, to slopez@crisosa.com.">Este sitio no guarda el formulario. El mensaje lo envías tú, desde tu correo, a slopez@crisosa.com.</p>
+        <p class="form__status" role="status" hidden data-es="Se abre tu correo para enviar la solicitud a {EMAIL}. Si no se abre, usa el teléfono o WhatsApp." data-en="Your email app opens to send the request to {EMAIL}. If it does not, use the phone or WhatsApp.">Se abre tu correo para enviar la solicitud a {EMAIL}. Si no se abre, usa el teléfono o WhatsApp.</p>
+        <p class="form__note" data-es="Este sitio no guarda el formulario. El mensaje lo envías tú, desde tu correo, a {EMAIL}." data-en="This site does not store the form. You send the message yourself, from your email, to {EMAIL}.">Este sitio no guarda el formulario. El mensaje lo envías tú, desde tu correo, a {EMAIL}.</p>
         <div class="form__direct">
           <a href="tel:{MX_TEL}">{MX_HUMAN}</a>
-          <a href="https://wa.me/{WA}" rel="noopener">WhatsApp</a>
+          <a href="https://wa.me/{WA}" rel="noopener">WhatsApp {WA_HUMAN}</a>
           <a href="mailto:{EMAIL}">{EMAIL}</a>
         </div>
       </form>"""
@@ -306,7 +307,7 @@ def org_ld():
       "url": "%(site)s/",
       "logo": "%(site)s/assets/logos/crisosa.png",
       "image": "%(site)s/assets/img/opt/og.jpg",
-      "email": "slopez@crisosa.com",
+      "email": "ventas@crisosa.com",
       "telephone": "+52-664-607-2000",
       "foundingDate": "1994",
       "description": "Almacenaje 3PL, material de empaque, EPP, productos de cuarto limpio y shelter en Tijuana y la frontera norte de México.",
@@ -322,9 +323,17 @@ def org_ld():
         {
           "@type": "ContactPoint",
           "telephone": "+52-664-607-2000",
-          "email": "slopez@crisosa.com",
+          "email": "ventas@crisosa.com",
           "contactType": "sales",
-          "name": "Salvador López Vives",
+          "name": "Emilio Vives",
+          "areaServed": "MX",
+          "availableLanguage": ["Spanish", "English"]
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+52-664-693-3534",
+          "contactType": "sales",
+          "name": "WhatsApp",
           "areaServed": "MX",
           "availableLanguage": ["Spanish", "English"]
         },
@@ -421,7 +430,7 @@ def footer(b, home):
         <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
         <li><a href="tel:{MX_TEL}">MX {MX_HUMAN}</a></li>
         <li><a href="tel:{US_TEL}">US {US_HUMAN}</a></li>
-        <li><a href="https://wa.me/{WA}" rel="noopener">WhatsApp</a></li>
+        <li><a href="https://wa.me/{WA}" rel="noopener">WhatsApp {WA_HUMAN}</a></li>
         <li>Tijuana, Baja California</li>
       </ul>
     </div>

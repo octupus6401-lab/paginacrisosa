@@ -17,17 +17,17 @@ la barra azul del membretado.
 
 Comercio exterior (`/comercio-exterior/`) queda como apoyo. Cifras públicas:
 fundada en 1994, 30+ años, CAGR 20% en dólares 1996–2025, cerca de 45,000 m²
-en 8 inmuebles arrendados (Tijuana, Valle Redondo, Rosarito, Lerma, Piedras
+en 8 inmuebles (Tijuana, Valle Redondo, Rosarito, Lerma, Piedras
 Negras). IVA/IEPS AAA desde 2015, C-TPAT, IMMEX, OEA en proceso.
 
-Contacto: Salvador López Vives, slopez@crisosa.com, +52 (664) 607-20-00,
-USA +1 (619) 270-22-29. WhatsApp usa la línea de México. Si el WhatsApp vive
-en otro número, se cambia `WA` en `tools/build.py`.
+Contacto: Emilio Vives, ventas@crisosa.com, +52 (664) 607-2000,
+USA +1 (619) 270-22-29. WhatsApp es otra línea: +52 664 693 3534
+(`WA` en `tools/build.py`).
 
 ## Formulario
 
 No hay backend ni credenciales. El formulario abre el correo del visitante
-dirigido a slopez@crisosa.com con empresa, contacto, servicio, m²/tarimas/volumen
+dirigido a ventas@crisosa.com con empresa, contacto, servicio, m²/tarimas/volumen
 y mensaje. Teléfono, WhatsApp y correo quedan al lado.
 
 Para recibir solicitudes sin cliente de correo, apunta `form.quote-form` a un
