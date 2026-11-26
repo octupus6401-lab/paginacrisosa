@@ -31,8 +31,8 @@ EMAIL = "ventas@crisosa.com"
 CONTACT = "Emilio Vives"
 MX_TEL = "+526646072000"
 MX_HUMAN = "+52 (664) 607-2000"
-US_TEL = "+16192702229"
-US_HUMAN = "+1 (619) 270-22-29"
+US_TEL = "+16197107190"
+US_HUMAN = "+1 (619) 710-7190"
 WA = "526646933534"
 WA_HUMAN = "+52 664 693 3534"
 
@@ -130,8 +130,8 @@ META = {
  "contacto": (
   "Cotizar almacenaje o shelter | Contacto CRISOSA",
   "Quote warehousing or shelter | Contact CRISOSA",
-  "Solicita espacio o una cotización. Emilio Vives, ventas@crisosa.com, +52 (664) 607-2000 y USA (619) 270-22-29.",
-  "Request space or a quote. Emilio Vives, ventas@crisosa.com, +52 (664) 607-2000 and USA +1 (619) 270-22-29."),
+  "Solicita espacio o una cotización. Emilio Vives, ventas@crisosa.com, +52 (664) 607-2000 y US +1 (619) 710-7190.",
+  "Request space or a quote. Emilio Vives, ventas@crisosa.com, +52 (664) 607-2000 and US +1 (619) 710-7190."),
 }
 
 SERVICES = [
@@ -339,7 +339,7 @@ def org_ld():
         },
         {
           "@type": "ContactPoint",
-          "telephone": "+1-619-270-2229",
+          "telephone": "+1-619-710-7190",
           "contactType": "sales",
           "areaServed": "US",
           "availableLanguage": ["English", "Spanish"]

@@ -21,7 +21,7 @@ en 8 inmuebles (Tijuana, Valle Redondo, Rosarito, Lerma, Piedras
 Negras). IVA/IEPS AAA desde 2015, C-TPAT, IMMEX, OEA en proceso.
 
 Contacto: Emilio Vives, ventas@crisosa.com, +52 (664) 607-2000,
-USA +1 (619) 270-22-29. WhatsApp es otra línea: +52 664 693 3534
+US +1 (619) 710-7190. WhatsApp es otra línea: +52 664 693 3534
 (`WA` en `tools/build.py`).
 
 ## Formulario
