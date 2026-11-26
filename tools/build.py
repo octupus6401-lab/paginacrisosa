@@ -52,13 +52,14 @@ PAGES = [
     ("contacto",        "contacto",          "Contacto",          "Contact"),
 ]
 PRIMARY = ["almacenaje", "empaque", "shelter", "soluciones", "nosotros"]
-HAS_FORM = {"home", "almacenaje", "empaque", "shelter", "comercio", "contacto", "caso-acero"}
+HAS_FORM = {"home", "almacenaje", "empaque", "shelter", "comercio", "contacto", "caso-acero", "caso-medico"}
 
 # Built and listed in the sitemap, but not in the nav. Each case is a page
 # under /soluciones/<slug>/. The index card lives in tools/parts/soluciones.html.
 # slug, directory, nav slug to mark (unused when the case is not a nav item)
 EXTRAS = [
     ("caso-acero", "soluciones/acero-anexo-2", "soluciones"),
+    ("caso-medico", "soluciones/dispositivos-medicos", "soluciones"),
 ]
 
 # Default service pre-selected on the quote form and the header CTA.
@@ -72,6 +73,7 @@ SERVICE_FOR = {
     "contacto": "almacenaje",
     "soluciones": "almacenaje",
     "caso-acero": "comercio",
+    "caso-medico": "shelter",
     "certificaciones": "almacenaje",
     "clientes": "almacenaje",
     "instalaciones": "almacenaje",
@@ -103,13 +105,18 @@ META = {
  "soluciones": (
   "Casos prácticos y soluciones | CRISOSA Logistic Solutions",
   "Practical cases and solutions | CRISOSA Logistic Solutions",
-  "Casos de operación real. Acero para manufactura: alta del Anexo 2 en el programa IMMEX de CRISOSA, fracción 7210.30.02.01 y 739 tarimas.",
-  "Real operations, written up. Steel for manufacturing: Annex 2 registration on CRISOSA's IMMEX program, tariff line 7210.30.02.01 and 739 pallets."),
+  "Casos de operación real: acero y Anexo 2 en el IMMEX de CRISOSA, y dispositivos médicos con permisos de COFEPRIS y de la FDA.",
+  "Real operations: steel and Annex 2 on CRISOSA's IMMEX program, and medical devices with COFEPRIS and FDA permits."),
  "caso-acero": (
   "Caso Anexo 2: importar y transformar acero | CRISOSA",
   "Annex 2 case: import and transform steel | CRISOSA",
   "Alta del Anexo 2 en el programa IMMEX de CRISOSA para importar acero galvanizado, fracción 7210.30.02.01, con transformación y trazabilidad. 739 tarimas.",
   "Annex 2 registration on CRISOSA's IMMEX program to import galvanized steel, tariff line 7210.30.02.01, with transformation and traceability. 739 pallets."),
+ "caso-medico": (
+  "Caso COFEPRIS y FDA: dispositivos médicos | CRISOSA",
+  "COFEPRIS and FDA case: medical devices | CRISOSA",
+  "Permisos de COFEPRIS y de la FDA validados antes de mover dispositivos médicos. Shelter, almacén con trazabilidad y cerca de 2,500 m² en planeación.",
+  "COFEPRIS and FDA permits validated before medical devices moved. Shelter, traced warehousing and about 2,500 m² in planning."),
  "servicios": (
   "Servicios de logística en Tijuana | CRISOSA",
   "Logistics services in Tijuana | CRISOSA",
@@ -465,6 +472,8 @@ def rel_prefix(directory):
 def og_for(slug):
     if slug == "caso-acero":
         return "article", f"{SITE}/assets/img/casos/acero/og.jpg"
+    if slug == "caso-medico":
+        return "article", f"{SITE}/assets/img/casos/medico/og.jpg"
     return "website", f"{SITE}/assets/img/opt/og.jpg"
 
 
@@ -530,8 +539,9 @@ def write_sitemap():
         "contacto": "0.8", "servicios": "0.7", "comercio": "0.6",
         "instalaciones": "0.7", "certificaciones": "0.6", "nosotros": "0.6",
         "clientes": "0.5", "soluciones": "0.7", "caso-acero": "0.6",
+        "caso-medico": "0.6",
     }
-    dated = {"soluciones": "2026-11-26", "caso-acero": "2026-11-26"}
+    dated = {"soluciones": "2026-11-26", "caso-acero": "2026-11-26", "caso-medico": "2026-11-26"}
     entries = [(p[0], p[1]) for p in PAGES] + [(s, d) for s, d, _n in EXTRAS]
     urls = []
     for slug, directory in entries:

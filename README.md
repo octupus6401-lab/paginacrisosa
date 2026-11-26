@@ -40,10 +40,12 @@ servicio de formularios y conserva los nombres de campo: `company`, `name`,
 `/soluciones/<slug>/`, registrada en `EXTRAS` dentro de `tools/build.py`
 (no entra al menú: se enlaza desde la tarjeta del índice).
 
-El caso publicado en esta rama es acero para manufactura, sin nombre de
-cliente: `/soluciones/acero-anexo-2/`. El eje es el alta de esas mercancías
-en el programa IMMEX de CRISOSA. Las fotos están en `assets/img/casos/acero/` (WebP). Otro caso
-puede sumarse o quitarse sin tocar esta página: basta su carpeta, su
+Los casos publicados, sin nombre de cliente, son acero para manufactura
+(`/soluciones/acero-anexo-2/`, alta en el programa IMMEX de CRISOSA) y
+dispositivos médicos (`/soluciones/dispositivos-medicos/`, permisos de
+COFEPRIS y de la FDA validados antes de mover mercancía). Las fotos están
+en `assets/img/casos/acero/` y `assets/img/casos/medico/` (WebP). Otro caso
+puede sumarse o quitarse sin tocar estas páginas: basta su carpeta, su
 entrada en `EXTRAS` y su tarjeta.
 
 `tools/parts/caso.ejemplo.html` sigue siendo una plantilla vacía. No se
