@@ -36,10 +36,20 @@ servicio de formularios y conserva los nombres de campo: `company`, `name`,
 
 ## Casos prácticos
 
-`/soluciones/` está en estado «próximamente». La ficha de ejemplo no es un caso
-real: vive en `tools/parts/caso.ejemplo.html` y, marcada, dentro de la página.
-Para publicar uno, copia el artículo dentro de `#casos`, quita la marca de
-ejemplo y usa sólo datos confirmados. Luego:
+`/soluciones/` es el índice. Cada caso es una página en
+`/soluciones/<slug>/`, registrada en `EXTRAS` dentro de `tools/build.py`
+(no entra al menú: se enlaza desde la tarjeta del índice).
+
+El caso publicado en esta rama es acero para manufactura, sin nombre de
+cliente: `/soluciones/acero-anexo-2/`. El eje es el alta de productos del
+Anexo 2. Las fotos están en `assets/img/casos/acero/` (WebP). Otro caso
+puede sumarse o quitarse sin tocar esta página: basta su carpeta, su
+entrada en `EXTRAS` y su tarjeta.
+
+`tools/parts/caso.ejemplo.html` sigue siendo una plantilla vacía. No se
+publica. Para un caso nuevo: crea `tools/parts/caso-<slug>.html`, añade la
+entrada en `EXTRAS` y en `META`, y una tarjeta en `tools/parts/soluciones.html`.
+Sólo datos confirmados. Luego:
 
 ```bash
 python3 tools/build.py

@@ -52,7 +52,14 @@ PAGES = [
     ("contacto",        "contacto",          "Contacto",          "Contact"),
 ]
 PRIMARY = ["almacenaje", "empaque", "shelter", "soluciones", "nosotros"]
-HAS_FORM = {"home", "almacenaje", "empaque", "shelter", "comercio", "contacto"}
+HAS_FORM = {"home", "almacenaje", "empaque", "shelter", "comercio", "contacto", "caso-acero"}
+
+# Built and listed in the sitemap, but not in the nav. Each case is a page
+# under /soluciones/<slug>/. The index card lives in tools/parts/soluciones.html.
+# slug, directory, nav slug to mark (unused when the case is not a nav item)
+EXTRAS = [
+    ("caso-acero", "soluciones/acero-anexo-2", "soluciones"),
+]
 
 # Default service pre-selected on the quote form and the header CTA.
 SERVICE_FOR = {
@@ -64,6 +71,7 @@ SERVICE_FOR = {
     "servicios": "almacenaje",
     "contacto": "almacenaje",
     "soluciones": "almacenaje",
+    "caso-acero": "comercio",
     "certificaciones": "almacenaje",
     "clientes": "almacenaje",
     "instalaciones": "almacenaje",
@@ -95,8 +103,13 @@ META = {
  "soluciones": (
   "Casos prácticos y soluciones | CRISOSA Logistic Solutions",
   "Practical cases and solutions | CRISOSA Logistic Solutions",
-  "Soluciones que CRISOSA diseña para una necesidad concreta de operación. Los casos se publicarán sólo con datos confirmados por la empresa.",
-  "Solutions CRISOSA designs for a specific operational need. Cases will be published only with figures confirmed by the company."),
+  "Casos de operación real. Acero para manufactura: alta del Anexo 2, fracción 7210.30.02.01 y 739 tarimas con trazabilidad.",
+  "Real operations, written up. Steel for manufacturing: Annex 2 registration, tariff line 7210.30.02.01 and 739 pallets with traceability."),
+ "caso-acero": (
+  "Caso Anexo 2: importar y transformar acero | CRISOSA",
+  "Annex 2 case: import and transform steel | CRISOSA",
+  "Alta del Anexo 2 para importar acero galvanizado en temporal, fracción 7210.30.02.01, con transformación y trazabilidad. Más de $8 millones y 739 tarimas.",
+  "Annex 2 registration to import galvanized steel temporarily, tariff line 7210.30.02.01, with transformation and traceability. Over MXN $8 million and 739 pallets."),
  "servicios": (
   "Servicios de logística en Tijuana | CRISOSA",
   "Logistics services in Tijuana | CRISOSA",
@@ -265,9 +278,9 @@ SHELL = """<!DOCTYPE html>
 <meta property="og:site_name" content="CRISOSA Logistic Solutions">
 <meta property="og:title" content="{title_es}">
 <meta property="og:description" content="{desc_es}">
-<meta property="og:type" content="website">
+<meta property="og:type" content="{og_type}">
 <meta property="og:url" content="{canonical}">
-<meta property="og:image" content="{site}/assets/img/opt/og.jpg">
+<meta property="og:image" content="{og_image}">
 <meta property="og:locale" content="es_MX">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
@@ -442,41 +455,57 @@ def footer(b, home):
 </footer>"""
 
 
+def rel_prefix(directory):
+    if not directory:
+        return "", "./"
+    ups = "../" * (directory.count("/") + 1)
+    return ups, ups
+
+
+def og_for(slug):
+    if slug == "caso-acero":
+        return "article", f"{SITE}/assets/img/casos/acero/og.jpg"
+    return "website", f"{SITE}/assets/img/opt/og.jpg"
+
+
+def emit_page(slug, directory, label):
+    b, home = rel_prefix(directory)
+    canonical = f"{SITE}/" + (f"{directory}/" if directory else "")
+    raw = (PARTS / f"{slug}.html").read_text(encoding="utf-8")
+    body = expand(raw, b, label)
+    body = body.replace("{b}", b).replace("{home}", home).replace("{site}", SITE)
+    t_es, t_en, d_es, d_en = META[slug]
+    og_type, og_image = og_for(slug)
+    preload = ""
+    if slug == "home":
+        preload = f'<link rel="preload" as="image" href="{b}assets/img/opt/warehouse.webp" fetchpriority="high">'
+    page = SHELL.format(
+        b=b, site=SITE, canonical=canonical, wa=WA,
+        ld=org_ld() if slug == "home" else "",
+        preload=preload,
+        og_type=og_type, og_image=og_image,
+        title_es=html.escape(t_es, quote=True), title_en=html.escape(t_en, quote=True),
+        desc_es=html.escape(d_es, quote=True), desc_en=html.escape(d_en, quote=True),
+        header=header(b, home, slug), footer=footer(b, home),
+        body=body.rstrip(),
+    )
+    out = ROOT / (directory if directory else ".") / "index.html"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(page, encoding="utf-8")
+    return str(out.relative_to(ROOT))
+
+
 def build():
     written = []
     for p in PAGES:
-        slug, directory = p[0], p[1]
-        b = "" if directory == "" else "../" if directory.count("/") == 0 else "../../"
-        # all current directories are one level deep
-        b = "" if directory == "" else "../"
-        home = "./" if directory == "" else "../"
-        canonical = f"{SITE}/" + (f"{directory}/" if directory else "")
-        raw = (PARTS / f"{slug}.html").read_text(encoding="utf-8")
-        body = expand(raw, b, p[2])
-        body = body.replace("{b}", b).replace("{home}", home)
-        t_es, t_en, d_es, d_en = META[slug]
-        preload = ""
-        if slug == "home":
-            preload = f'<link rel="preload" as="image" href="{b}assets/img/opt/warehouse.webp" fetchpriority="high">'
-        page = SHELL.format(
-            b=b, site=SITE, canonical=canonical, wa=WA,
-            ld=org_ld() if slug == "home" else "",
-            preload=preload,
-            title_es=html.escape(t_es, quote=True), title_en=html.escape(t_en, quote=True),
-            desc_es=html.escape(d_es, quote=True), desc_en=html.escape(d_en, quote=True),
-            header=header(b, home, slug), footer=footer(b, home),
-            body=body.rstrip(),
-        )
-        out = ROOT / (directory if directory else ".") / "index.html"
-        out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(page, encoding="utf-8")
-        written.append(str(out.relative_to(ROOT)))
+        written.append(emit_page(p[0], p[1], p[2]))
 
     nf = PARTS / "404.html"
     if nf.exists():
         body = expand(nf.read_text(encoding="utf-8"), "/", "404").replace("{b}", "/").replace("{home}", "/")
         page = SHELL.format(
             b="/", site=SITE, canonical=f"{SITE}/404.html", wa=WA, ld="", preload="",
+            og_type="website", og_image=f"{SITE}/assets/img/opt/og.jpg",
             title_es="Página no encontrada — CRISOSA", title_en="Page not found — CRISOSA",
             desc_es="La página que buscas no existe. Vuelve al almacenaje o al contacto.",
             desc_en="That page does not exist. Go back to warehousing or contact.",
@@ -484,6 +513,9 @@ def build():
             body=body.rstrip())
         (ROOT / "404.html").write_text(page, encoding="utf-8")
         written.append("404.html")
+
+    for slug, directory, _nav in EXTRAS:
+        written.append(emit_page(slug, directory, slug))
 
     write_sitemap()
     written += ["sitemap.xml", "robots.txt"]
@@ -497,14 +529,16 @@ def write_sitemap():
         "home": "1.0", "almacenaje": "0.9", "empaque": "0.8", "shelter": "0.8",
         "contacto": "0.8", "servicios": "0.7", "comercio": "0.6",
         "instalaciones": "0.7", "certificaciones": "0.6", "nosotros": "0.6",
-        "clientes": "0.5", "soluciones": "0.4",
+        "clientes": "0.5", "soluciones": "0.7", "caso-acero": "0.6",
     }
+    dated = {"soluciones": "2026-11-26", "caso-acero": "2026-11-26"}
+    entries = [(p[0], p[1]) for p in PAGES] + [(s, d) for s, d, _n in EXTRAS]
     urls = []
-    for p in PAGES:
-        loc = f"{SITE}/" + (f"{p[1]}/" if p[1] else "")
+    for slug, directory in entries:
+        loc = f"{SITE}/" + (f"{directory}/" if directory else "")
         urls.append(
-            f"  <url><loc>{loc}</loc><lastmod>2026-11-25</lastmod>"
-            f"<changefreq>monthly</changefreq><priority>{pri.get(p[0], '0.5')}</priority></url>"
+            f"  <url><loc>{loc}</loc><lastmod>{dated.get(slug, '2026-11-25')}</lastmod>"
+            f"<changefreq>monthly</changefreq><priority>{pri.get(slug, '0.5')}</priority></url>"
         )
     (ROOT / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
