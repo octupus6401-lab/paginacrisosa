@@ -1,80 +1,37 @@
-<section class="panel panel--auto panel--wide" data-nav="light" style="padding-top:calc(var(--hdr) + 4.5rem)">
-  <div class="panel__in">
-    <div class="stack reveal">
-      <p class="eyebrow" data-es="Contacto" data-en="Contact">Contacto</p>
-      <h1 data-es="Hagamos avanzar tu operación" data-en="Let's move your operation forward">Hagamos avanzar tu operación</h1>
-      <p class="lede" data-es="Producto, volumen, origen y destino. Con eso te respondemos con números, no con un rango."
-         data-en="Product, volume, origin and destination. With that we come back with numbers, not a range.">
-        Producto, volumen, origen y destino. Con eso te respondemos con números, no con un rango.</p>
+<section class="page-hero">
+  <div class="wrap split">
+    <div>
+      <nav class="crumbs" aria-label="Ruta">
+        <a href="{home}" data-es="Inicio" data-en="Home">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page" data-es="Contacto" data-en="Contact">Contacto</span>
+      </nav>
+      <p class="eyebrow" data-es="Ventas" data-en="Sales">Ventas</p>
+      <h1 data-es="Pide espacio o una cotización." data-en="Request space or a quote.">Pide espacio o una cotización.</h1>
+      <p class="lede" data-es="Empresa, contacto, servicio y una cifra —m², tarimas o volumen—. Con eso se responde. Si prefieres no usar el formulario, los datos directos están al lado." data-en="Company, contact, service and a number — square meters, pallets or volume. That is enough for a reply. If you would rather not use the form, the direct details are beside it.">Empresa, contacto, servicio y una cifra —m², tarimas o volumen—. Con eso se responde. Si prefieres no usar el formulario, los datos directos están al lado.</p>
+      <ul class="contacts">
+        <li><b data-es="Nombre" data-en="Name">Nombre</b><span>Emilio Vives</span></li>
+        <li><b data-es="Correo" data-en="Email">Correo</b><a href="mailto:ventas@crisosa.com">ventas@crisosa.com</a></li>
+        <li><b data-es="México" data-en="Mexico">México</b><a href="tel:+526646072000">+52 (664) 607-2000</a></li>
+        <li><b>USA</b><a href="tel:+16197107190">+1 (619) 710-7190</a></li>
+        <li><b>WhatsApp</b><a href="https://wa.me/526646933534" rel="noopener">+52 664 693 3534</a></li>
+        <li><b data-es="Sede" data-en="Base">Sede</b><span>Tijuana, Baja California, México</span></li>
+      </ul>
     </div>
-
-    <div class="split split--top" style="margin-top:clamp(2rem,5vw,3.5rem)">
-      <form class="form reveal" id="form" novalidate>
-        <div class="form__row">
-          <label for="f-name" data-es="Nombre" data-en="Name">Nombre</label>
-          <input id="f-name" name="name" type="text" required autocomplete="name"
-                 data-es-ph="Nombre y apellido" data-en-ph="First and last name" placeholder="Nombre y apellido">
-        </div>
-        <div class="form__row">
-          <label for="f-company" data-es="Empresa" data-en="Company">Empresa</label>
-          <input id="f-company" name="company" type="text" autocomplete="organization"
-                 data-es-ph="Razón social o marca" data-en-ph="Company or brand" placeholder="Razón social o marca">
-        </div>
-        <div class="form__row">
-          <label for="f-email" data-es="Correo" data-en="Email">Correo</label>
-          <input id="f-email" name="email" type="email" required autocomplete="email" placeholder="nombre@empresa.com">
-        </div>
-        <div class="form__row">
-          <label for="f-phone" data-es="Teléfono" data-en="Phone">Teléfono</label>
-          <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="+52 664 000 0000">
-        </div>
-        <div class="form__row">
-          <label for="f-service" data-es="Servicio de interés" data-en="Service of interest">Servicio de interés</label>
-          <select id="f-service" name="service">
-            <option value="Import/Export" data-es="Importación / Exportación" data-en="Import / Export">Importación / Exportación</option>
-            <option value="Warehousing" data-es="Almacenaje" data-en="Warehousing">Almacenaje</option>
-            <option value="Shelter">Shelter</option>
-            <option value="Other" data-es="Otro" data-en="Other">Otro</option>
-          </select>
-        </div>
-        <div class="form__row">
-          <label for="f-msg" data-es="Mensaje" data-en="Message">Mensaje</label>
-          <textarea id="f-msg" name="message" rows="4" required
-                    data-es-ph="Producto, volumen mensual, origen y destino."
-                    data-en-ph="Product, monthly volume, origin and destination."
-                    placeholder="Producto, volumen mensual, origen y destino."></textarea>
-        </div>
-        <button class="pill pill--solid" type="submit" data-es="Llamar" data-en="Call">Llamar</button>
-        <p class="form__note" data-es="El sitio no envía correo. Al pulsar se abre la llamada a +52 (664) 607-25-31. También puedes marcar al +1 (619) 270-22-29."
-           data-en="This site does not send email. The button opens a call to +52 (664) 607-25-31. You can also dial +1 (619) 270-22-29.">
-          El sitio no envía correo. Al pulsar se abre la llamada a +52 (664) 607-25-31. También puedes marcar al +1 (619) 270-22-29.</p>
-      </form>
-
-      <div class="stack stack--l reveal" data-d="1">
-        <ul class="contacts">
-          <li><b data-es="México" data-en="Mexico">México</b><a href="tel:+526646072531">+52 (664) 607-25-31</a></li>
-          <li><b>USA</b><a href="tel:+16192702229">+1 (619) 270-22-29</a></li>
-          <li><b data-es="Ubicación" data-en="Location">Ubicación</b><span>Tijuana, Baja California, México</span></li>
-        </ul>
-      </div>
-    </div>
+    {{FORM:almacenaje}}
   </div>
 </section>
 
-<section class="panel panel--auto panel--paper" data-nav="light">
-  <div class="panel__in">
-    <div class="stack reveal">
-      <p class="eyebrow" data-es="Ubicación" data-en="Location">Ubicación</p>
-      <h2 data-es="Dónde estamos" data-en="Where we are">Dónde estamos</h2>
-      <p class="lede" data-es="En Tijuana, Baja California, a minutos de las dos garitas comerciales del corredor."
-         data-en="In Tijuana, Baja California, minutes from both commercial ports of entry in the corridor.">
-        En Tijuana, Baja California, a minutos de las dos garitas comerciales del corredor.</p>
+<section class="bg-soft">
+  <div class="wrap">
+    <div class="sec__h">
+      <p class="eyebrow" data-es="Tijuana" data-en="Tijuana">Tijuana</p>
+      <h2 data-es="A minutos de las dos garitas comerciales." data-en="Minutes from both commercial ports of entry.">A minutos de las dos garitas comerciales.</h2>
+      <p class="lede" data-es="La operación de Tijuana está respecto de Otay Mesa y San Ysidro. El domicilio exacto y las indicaciones para el transportista se mandan con la cita: no van en el sitio." data-en="The Tijuana operation sits relative to Otay Mesa and San Ysidro. The exact address and the carrier instructions go out with the appointment: they are not on the site.">La operación de Tijuana está respecto de Otay Mesa y San Ysidro. El domicilio exacto y las indicaciones para el transportista se mandan con la cita: no van en el sitio.</p>
     </div>
-    <figure class="figure figure--n reveal" data-d="1">
+    <figure class="figure">
       {{SVG:corridor}}
-      <figcaption data-es="Escríbenos y te compartimos la dirección exacta y las indicaciones de acceso para transportistas."
-                  data-en="Write to us and we share the exact address and carrier access instructions.">
-        Escríbenos y te compartimos la dirección exacta y las indicaciones de acceso para transportistas.</figcaption>
+      <figcaption data-es="Esquema. No es un mapa a escala. Lerma, Piedras Negras, Valle Redondo y Rosarito están en la página de instalaciones." data-en="Diagram. Not a scale map. Lerma, Piedras Negras, Valle Redondo and Rosarito are on the facilities page.">Esquema. No es un mapa a escala. Lerma, Piedras Negras, Valle Redondo y Rosarito están en la página de instalaciones.</figcaption>
     </figure>
   </div>
 </section>
