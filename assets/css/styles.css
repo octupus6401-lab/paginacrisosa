@@ -459,7 +459,8 @@ body:has(.quote-form) .float { display: none; }
 .stats.stats--case div:nth-child(odd) { border-left: 0; }
 .stats.stats--case div:nth-child(even) { border-left: 1px solid var(--line); }
 .stats.stats--case div:nth-child(n+3) { border-top: 1px solid var(--line); }
-.stats.stats--case div:last-child { grid-column: 1 / -1; border-left: 0; }
+.stats.stats--case div:last-child:nth-child(odd) { grid-column: 1 / -1; border-left: 0; }
+.stats.stats--case .stat-code { font-size: clamp(1rem, .82rem + .35vw, 1.2rem); letter-spacing: -.02em; }
 .case-logo { width: 168px; height: auto; margin: 0 0 1rem; }
 .case-fig { margin: 1.6rem 0 0; }
 .case-fig img, .case-gallery img { width: 100%; height: auto; border-radius: 14px; background: var(--bg-2); }

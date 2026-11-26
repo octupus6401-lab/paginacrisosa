@@ -103,13 +103,13 @@ META = {
  "soluciones": (
   "Casos prácticos y soluciones | CRISOSA Logistic Solutions",
   "Practical cases and solutions | CRISOSA Logistic Solutions",
-  "Casos de operación real. Acero para manufactura: alta del Anexo 2, fracción 7210.30.02.01 y 739 tarimas con trazabilidad.",
-  "Real operations, written up. Steel for manufacturing: Annex 2 registration, tariff line 7210.30.02.01 and 739 pallets with traceability."),
+  "Casos de operación real. Acero para manufactura: alta del Anexo 2 en el programa IMMEX de CRISOSA, fracción 7210.30.02.01 y 739 tarimas.",
+  "Real operations, written up. Steel for manufacturing: Annex 2 registration on CRISOSA's IMMEX program, tariff line 7210.30.02.01 and 739 pallets."),
  "caso-acero": (
   "Caso Anexo 2: importar y transformar acero | CRISOSA",
   "Annex 2 case: import and transform steel | CRISOSA",
-  "Alta del Anexo 2 para importar acero galvanizado en temporal, fracción 7210.30.02.01, con transformación y trazabilidad. Más de $8 millones y 739 tarimas.",
-  "Annex 2 registration to import galvanized steel temporarily, tariff line 7210.30.02.01, with transformation and traceability. Over MXN $8 million and 739 pallets."),
+  "Alta del Anexo 2 en el programa IMMEX de CRISOSA para importar acero galvanizado, fracción 7210.30.02.01, con transformación y trazabilidad. 739 tarimas.",
+  "Annex 2 registration on CRISOSA's IMMEX program to import galvanized steel, tariff line 7210.30.02.01, with transformation and traceability. 739 pallets."),
  "servicios": (
   "Servicios de logística en Tijuana | CRISOSA",
   "Logistics services in Tijuana | CRISOSA",
