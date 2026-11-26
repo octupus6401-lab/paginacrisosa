@@ -1,14 +1,19 @@
 <!--
   PLANTILLA. No es una página del sitio y build.py no la publica.
-  Para agregar un caso real:
-  1. Copia el <article> de abajo dentro de <div class="cases" id="casos">
-     en tools/parts/soluciones.html, antes del artículo "Próximamente"
-     (o quita el próximamente cuando ya haya un caso).
-  2. Borra la clase case--sample y el párrafo sample__flag.
-  3. Sustituye los corchetes sólo con datos confirmados por la empresa.
-     No inventes cliente, sector ni resultado. Si el nombre del cliente
-     no está autorizado, usa el sector o el tipo de carga.
-  4. python3 tools/build.py
+  Para un caso real:
+  1. Crea tools/parts/caso-<slug>.html con el mismo marco que
+     tools/parts/caso-acero.html (resumen, cifras, reto,
+     solución, resultados, cierre y {{FORM:...}}).
+  2. Registra el slug en EXTRAS y en META, dentro de tools/build.py.
+     EXTRAS no agrega el caso al menú.
+  3. Agrega una tarjeta <a class="case-card"> dentro de #casos en
+     tools/parts/soluciones.html.
+  4. Sustituye los corchetes sólo con datos confirmados.
+     No inventes cliente, sector, cita ni resultado. Si el nombre del
+     cliente no está autorizado, usa el sector o el tipo de carga.
+  5. python3 tools/build.py
+
+  El artículo de abajo es sólo el esquema de la tarjeta del índice.
 -->
 <article class="case">
   <p class="eyebrow">[Año]</p>
