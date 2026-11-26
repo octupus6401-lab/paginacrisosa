@@ -36,10 +36,20 @@ servicio de formularios y conserva los nombres de campo: `company`, `name`,
 
 ## Casos prácticos
 
-`/soluciones/` está en estado «próximamente». La ficha de ejemplo no es un caso
-real: vive en `tools/parts/caso.ejemplo.html` y, marcada, dentro de la página.
-Para publicar uno, copia el artículo dentro de `#casos`, quita la marca de
-ejemplo y usa sólo datos confirmados. Luego:
+`/soluciones/` es el índice. Cada caso es una página en
+`/soluciones/<slug>/`, registrada en `EXTRAS` dentro de `tools/build.py`
+(no entra al menú: se enlaza desde la tarjeta del índice).
+
+El primer caso publicado es Marketplace Brands LLC:
+`/soluciones/marketplace-brands/`. El texto sale de material confirmado
+por la empresa. Las fotos de producto son del sitio oficial de Marketplace
+Brands (`assets/img/casos/mb/`, WebP). El bloque «Equipo del proyecto»
+está entre comentarios HTML para poder borrarlo de un tirón.
+
+`tools/parts/caso.ejemplo.html` sigue siendo una plantilla vacía. No se
+publica. Para un caso nuevo: crea `tools/parts/caso-<slug>.html`, añade la
+entrada en `EXTRAS` y en `META`, y una tarjeta en `tools/parts/soluciones.html`.
+Sólo datos confirmados. Luego:
 
 ```bash
 python3 tools/build.py
